@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<odoo>
+
+	<record id="color_action" model="ir.actions.act_window">
+		<field name="name">colores</field>
+		<field name="res_model">colores</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem name="colores" web_icon="contaag_color,static/description/icon.png" id="colores_menu"/>
+	<menuitem name="color" id="color_menu" parent="colores_menu" action="color_action"/>
+	
+
+</odoo>
