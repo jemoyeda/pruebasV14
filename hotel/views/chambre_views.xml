@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="hotel_chambre_action" model="ir.actions.act_window">
+        <field name="name">Chambre</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.chambre</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+          </p>
+        </field>
+    </record>
+    <record id="hotel_chambre_tree" model="ir.ui.view">
+        <field name="name">hotel.chambre.tree</field>
+        <field name="model">hotel.chambre</field>
+        <field name="arch" type="xml">
+            <tree string="La liste des chambres">
+                <field name="numero"/>
+                <field name="infor"/> 
+            </tree>
+        </field>
+    </record>
+    <record id="hotel_chambre_search" model="ir.ui.view">
+        <field name="model">hotel.chambre</field>
+            <field name="arch" type="xml">
+            <search>
+                <field name="numero"/>
+                <field name="infor"/>
+            </search>
+        </field>
+    </record>
+    <record id="hotel_chambre_form" model="ir.ui.view">
+        <field name="name">hotel.chambre.form</field>
+        <field name="model">hotel.chambre</field>
+        <field name="arch" type="xml">
+            <form string="Détail d'un chambre">
+                <sheet>  
+                    <group>
+                        <group>
+                            <field name="numero"/>
+                            <field name="infor"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <menuitem
+        name="Hotel"
+        id="menu_hotel_root"/>
+
+
+    <menuitem
+        id="menu_hotel_chambre"
+        name="chambre"
+        parent="menu_hotel_root"
+        action="hotel_chambre_action"
+        sequence="4"/>
+
+</odoo>

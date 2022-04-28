@@ -1,0 +1,12 @@
+<odoo>
+
+    <template id="index">
+         <title>Hotel</title>
+         <t t-foreach="location" t-as="loc">
+             <p><t t-esc="loc.id"/> <t t-esc="loc.dateloc"/></p>
+             <h3><t t-esc="loc.chambre_id"/></h3>
+             <h3><t t-esc="loc.total"/></h3>
+         </t>
+    </template>
+
+</odoo>
