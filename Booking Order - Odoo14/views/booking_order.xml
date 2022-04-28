@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">Sale Order Form Inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <!-- Add your fields here -->
+                <field name="is_booking_order" />
+            </xpath>
+            <!-- Add your fields here -->
+            <notebook position="inside">
+                <page string="Booking Order" attrs="{'invisible': [('is_booking_order','=', False)]}">
+                    <group string="Service Team">
+                        <field name="team_u_id" attrs="{'required': [('is_booking_order','=', True)]}" />
+                        <field name="team_leader_id" attrs="{'required': [('is_booking_order','=', True)]}" />
+                        <field string="Service Team Members" name="team_member_ids" attrs="{'required': [('is_booking_order','=', True)]}" />
+                    </group>
+                    <group string="Date and Time">
+                        <field name="booking_start" attrs="{'required': [('is_booking_order','=', True)]}" />
+                        <field name="booking_end" attrs="{'required': [('is_booking_order','=', True)]}" />
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <!-- sale.order action window -->
+    <record id="booking_order_action" model="ir.actions.act_window">
+        <field name="name">Booking Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_is_booking_order':'True'}</field>
+        <field name="domain">[('is_booking_order','=',True)]</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="booking_order_menu_act" name="Booking Order" parent="booking_menu_category" action="booking_order_action" sequence="20" />
+
+</odoo>
