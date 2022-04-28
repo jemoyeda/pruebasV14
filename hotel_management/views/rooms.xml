@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    Rooms Actions-->
+    <record id="hotel_rooms_action" model="ir.actions.act_window">
+        <field name="name">Rooms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.rooms</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{"search_default_":1,"search_default_state_type":1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Rooms
+            </p>
+        </field>
+    </record>
+
+    <!--    Action Facility-->
+    <record id="hotel_rooms_facility_action" model="ir.actions.act_window">
+        <field name="name">Rooms Facilities</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.room.facility</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Room facility
+            </p>
+        </field>
+    </record>
+
+
+    <!--        Action Reception-->
+    <record id="hotel_accommodation_action" model="ir.actions.act_window">
+        <field name="name">Rooms Accommodation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.accommodation</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{"search_default_":1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Room facility
+            </p>
+        </field>
+    </record>
+
+
+    <!--        Action Food Ordering-->
+    <record id="hotel_food_ordering_action" model="ir.actions.act_window">
+        <field name="name">Food Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.food.order</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{"search_default_":1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Room facility
+            </p>
+        </field>
+    </record>
+
+     <!--        Action Food Category-->
+    <record id="hotel_food_category_action" model="ir.actions.act_window">
+        <field name="name">Food Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.food.category</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="context">{"search_default_":1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Room facility
+            </p>
+        </field>
+    </record>
+
+
+    <!--    TOP MENU       -->
+    <menuitem id="hotel_root_menu"
+              name="Hotel"
+              sequence="10"/>
+
+    <menuitem id="room_menu"
+              name="Rooms"
+              parent="hotel_root_menu"
+              action="hotel_rooms_action"
+              sequence="2"/>
+
+    <menuitem id="settings_menu"
+              name="Settings"
+              parent="hotel_root_menu"
+              sequence="2"/>
+
+    <menuitem id="room_facility_menu"
+              name="Room facilities"
+              parent="settings_menu"
+              action="hotel_rooms_facility_action"
+              sequence="3"/>
+
+    <menuitem id="hotel_room_management_menu"
+              name="Hotel Room Management"
+              parent="hotel_root_menu"
+              sequence="3"/>
+
+    <menuitem id="reception_menu"
+              name="Reception"
+              parent="hotel_room_management_menu"
+              sequence="2"/>
+
+    <menuitem id="accommodation_menu"
+              name="Accommodation"
+              parent="reception_menu"
+              action="hotel_accommodation_action"
+              sequence="2"/>
+
+    <menuitem id="food_order_menu"
+              name="Food Order"
+              parent="hotel_root_menu"
+              action="hotel_food_ordering_action"
+              sequence="3"/>
+
+    <menuitem id="food_category_menu"
+              name="Food Category"
+              parent="settings_menu"
+              action="hotel_food_category_action"
+              sequence="2"/>
+
+
+    <!--    Tree view-->
+    <record id="view_hotel_rooms_tree" model="ir.ui.view">
+        <field name="name">hotel.rooms.tree</field>
+        <field name="model">hotel.rooms</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="bed"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    Form views-->
+    <record id="view_hotel_rooms_form" model="ir.ui.view">
+        <field name="name">hotel.rooms.form</field>
+        <field name="model">hotel.rooms</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <h4>
+                                <p>Room Number</p>
+                            </h4>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="bed"/>
+                            <field name="available_beds" attrs="{'invisible':[('bed','!=','dormitory')]}"/>
+                        </group>
+                        <group>
+                            <field name="room_facility_ids"/>
+                            <field name="currency_id"/>
+                            <field name="rent"/>
+<!--                            <field name="tag_id_custom"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--    Search view -->
+
+    <record id="view_hotel_rooms_search" model="ir.ui.view">
+        <field name="name">hotel.accommodation.rooms.search</field>
+        <field name="model">hotel.rooms</field>
+        <field name="arch" type="xml">
+            <search string="Search Rooms">
+                <field name="name"/>
+                <separator/>
+                <filter string="Single" name="single" domain="[('bed', '=', 'single')]"/>
+                <filter string="Double" name="double" domain="[('bed', '=', 'double')]"/>
+                <filter string="Dormitory" name="dormitory" domain="[('bed', '=', 'dormitory')]"/>
+                <filter string="Available Rooms" name="available_rooms" domain="[('check_in_state','=',False)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Facility" name="room_facility" context="{'group_by': 'tag_id_custom'}"/>
+                    <filter string="Room Type" name="room_type" context="{'group_by': 'bed'}"/>
+
+                </group>
+                <separator/>
+            </search>
+        </field>
+    </record>
+</odoo>

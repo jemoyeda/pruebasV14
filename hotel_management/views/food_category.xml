@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Tree View  -->
+    <record id="view_hotel_food_category_tree" model="ir.ui.view">
+        <field name="name">hotel.food.category.tree</field>
+        <field name="model">hotel.food.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                 <field name="product_ids" widget="many2many_tags">
+                     <tree>
+                         <field name="name"/>
+                     </tree>
+                 </field>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    Form views-->
+    <record id="view_hotel_food_category_form" model="ir.ui.view">
+        <field name="name">hotel.food.category.form</field>
+        <field name="model">hotel.food.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
