@@ -29,7 +29,6 @@
         #'views/templates.xml',
         'views/chambre_views.xml',
         'views/location_views.xml',
-        'views/template.xml',
         'views/templates2.xml',
     ],
     # only loaded in demonstration mode
