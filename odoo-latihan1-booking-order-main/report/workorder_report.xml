@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+<template id="report_bo_workorder">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>Faktur Work Order</h1>
+                        <h3>
+                            <div class="row">
+                                <table class="table-bordered">
+                                    <tr>
+                                        <td><span t-field="o.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Team Name</td>
+                                        <td><span t-field="o.team"/></td>
+                                        <td>Customer Name</td>
+                                        <td>--CN--</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Booking Order Ref</td>
+                                        <!-- <td><span t-field="o.booking_order_reference"/></td> --> <td></td>
+                                        <td>Date</td>
+                                        <td><span t-field="o.date_start"/> - <span t-field="o.date_end"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NOTES:</td>
+                                        <!-- <td><span t-field="o.notes"/></td> -->
+                                    </tr>
+                                    <tr>
+                                        <td>SIGNATURE:</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </h3>
+                </div>
+            </t>
+        </t>
+    </t>    
+</template>  
+</odoo>  

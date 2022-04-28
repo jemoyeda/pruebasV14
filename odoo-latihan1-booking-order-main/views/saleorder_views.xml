@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="saleorder_sequence_id" model="ir.sequence">
+        <field name="name">SO Number</field>
+        <field name="code">so.number</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">SO</field>
+        <field name="padding">3</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- bo.saleorder tree view -->
+    <record id="bo_saleorder_view_tree" model="ir.ui.view">
+        <field name="name">Booking Order</field>
+        <field name="model">bo.saleorder</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="is_booking_order"/>
+                <field name="team"/>
+                <field name="team_leader"/>
+                <field name="team_members"/>
+                <field name="booking_start"/>
+                <field name="booking_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- bo.saleorder form view -->
+    <record id="bo_saleorder_view_form" model="ir.ui.view">
+        <field name="name">Form Booking Order</field>
+        <field name="model">bo.saleorder</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="is_booking_order"/>
+                        <field name="team"/>
+                        <field name="team_leader"/>
+                        <field name="team_members"/>
+                        <field name="booking_start"/>
+                        <field name="booking_end"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- bo.saleorder action window -->
+    <record id="bo_saleorder_action" model="ir.actions.act_window">
+        <field name="name">Daftar Booking Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bo.saleorder</field>
+        <field name="domain">[('is_booking_order', '=', 'True')]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem 
+        id="bo_saleorder_menu_act" 
+        name="Booking Order" 
+        parent="bo_menu_categ" 
+        action="bo_saleorder_action" 
+        sequence="20"/>
+</odoo>

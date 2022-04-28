@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bo_serviceteam,access.bo.serviceteam,model_bo_serviceteam,,1,1,1,1
+access_bo_saleorder,access.bo.saleorder,model_bo_saleorder,,1,1,1,1
+access_bo_workorder,access.bo.workorder,model_bo_workorder,,1,1,1,1

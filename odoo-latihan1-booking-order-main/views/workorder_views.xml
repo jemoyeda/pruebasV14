@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="workorder_sequence_id" model="ir.sequence">
+        <field name="name">WO Number</field>
+        <field name="code">wo.number</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">WO</field>
+        <field name="padding">3</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <!-- bo.workorder tree view -->
+    <record id="bo_workorder_view_tree" model="ir.ui.view">
+        <field name="name">bo.workorder.view.tree</field>
+        <field name="model">bo.workorder</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="booking_order_reference"/>
+                <field name="team"/>
+                <field name="team_leader"/>
+                <field name="team_members"/>
+                <field name="planned_start"/>
+                <field name="planned_end"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="state"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- bo.workorder form view -->
+    <record id="bo_workorder_view_form" model="ir.ui.view">
+        <field name="name">Form Booking Order</field>
+        <field name="model">bo.workorder</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="booking_order_reference"/>
+                        <field name="team"/>
+                        <field name="team_leader"/>
+                        <field name="team_members"/>
+                        <field name="planned_start"/>
+                        <field name="planned_end"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="state"/>
+                        <field name="notes"/>
+                    </group>
+                    <!-- <group>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="btn_one" type="object" class="oe_stat_button" icon="fa-">
+                                <field name="state" string="Btn One" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <button name="btn_one" type="object" string="Btn Three"/>
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </group> -->
+                    
+                    <br/> <br/> <br/>
+
+                    <header>
+                        <button string="Start Work" name="btn_start_work" type="object" class="btn-primary" states="pending" />
+                        <button string="End Work" name="btn_end_work" type="object" class="btn-primary" states="in progress"/>
+                        <button string="Reset" name="btn_reset" type="object" class="btn-danger" states="in progress"/>
+                        <button string="Cancel" name="btn_cancel" type="object" />
+                    </header>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- bo.workorder action window -->
+    <record id="bo_workorder_action" model="ir.actions.act_window">
+        <field name="name">Daftar Work Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bo.workorder</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem 
+        id="bo_workorder_menu_act" 
+        name="Work Order" 
+        parent="bo_menu_categ" 
+        action="bo_workorder_action" 
+        sequence="30"/>
+</odoo>

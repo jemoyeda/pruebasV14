@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- bo.serviceteam tree view -->
+    <record id="bo_serviceteam_view_tree" model="ir.ui.view">
+        <field name="name">Team</field>
+        <field name="model">bo.serviceteam</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="team_leader"/>
+                <field name="team_members"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- bo.serviceteam form view -->
+    <record id="bo_serviceteam_view_form" model="ir.ui.view">
+        <field name="name">Form New Team</field>
+        <field name="model">bo.serviceteam</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="team_leader"/>
+                        <field name="team_members"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- bo.serviceteam action window -->
+    <record id="bo_serviceteam_action" model="ir.actions.act_window">
+        <field name="name">Daftar Team</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bo.serviceteam</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem 
+        id="bo_serviceteam_menu_act" 
+        name="Service Team" 
+        parent="bo_menu_categ" 
+        action="bo_serviceteam_action" 
+        sequence="10"/>
+</odoo>
