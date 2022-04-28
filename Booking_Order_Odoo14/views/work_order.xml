@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- sale.work.order tree view -->
+    <record id="sale_work_order_view_tree" model="ir.ui.view">
+        <field name="name">Work Order</field>
+        <field name="model">sale.work.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name" />
+                <field name="sale_order_id" />
+                <field name="team_id" />
+                <field name="team_leader_id" />
+                <field name="planned_start" />
+                <field name="planned_end" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- sale.work.order form view -->
+    <record id="sale_work_order_view_form" model="ir.ui.view">
+        <field name="name">sale.work.order.view.form</field>
+        <field name="model">sale.work.order</field>
+        <field name="arch" type="xml">
+            <form string="Test">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="sale_order_id" />
+                    </group>
+                    <group string="Service Team">
+                        <field name="team_id" />
+                        <field name="team_leader_id" />
+                        <field name="team_member_ids" />
+                    </group>
+                    <group string="Date and Time">
+                        <field name="planned_start" />
+                        <field name="planned_end" />
+                        <field name="date_start" />
+                        <field name="date_end" />
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- sale.work.order action window -->
+    <record id="sale_work_order_action" model="ir.actions.act_window">
+        <field name="name">Work Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.work.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="working_order_menu_act" name="Work Order" parent="booking_menu_categ" action="sale_work_order_action" sequence="30" />
+</odoo>
