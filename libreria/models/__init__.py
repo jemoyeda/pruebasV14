@@ -1,1 +1,1 @@
-from . import libros
+from . import libros, autor

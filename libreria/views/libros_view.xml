@@ -11,10 +11,23 @@
                         <group>
                             <field name="name"/>
                             <field name="editorial"/>
+                            <field name="isbn"/>
                         </group>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="view_tree_libros" model="ir.ui.view">
+        <field name="name">libros.tree.view</field>
+        <field name="model">libros</field>
+        <field name="arch" type="xml">
+            <tree string="libros">
+                <field name="name"/>
+                <field name="editorial"/>
+                <field name="isbn"/>
+            </tree>
         </field>
     </record>
 </odoo>
