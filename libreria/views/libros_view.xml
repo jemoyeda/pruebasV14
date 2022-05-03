@@ -14,6 +14,7 @@
                             <field name="editorial"/>
                             <field name="isbn"/>
                             <field name="autor_id"/>
+                            <field name="last_name"/>
                         </group>
                     </group>
                 </sheet>
@@ -30,12 +31,13 @@
                 <field name="name"/>
                 <field name="editorial"/>
                 <field name="isbn"/>
+                <field name="autor_id"
             </tree>
         </field>
     </record>
 
 
-    <!--Vista Kanban para libros-->
+    <!--Vista Kanban para libros
     <record id="libros_kanban_view" model="ir.ui.view">
         <field name="name">libro.kanban.view</field>
         <field name="model">libros</field>
@@ -67,4 +69,4 @@
             </kanban>
         </field>
     </record>
-</odoo>
+</odoo>-->
