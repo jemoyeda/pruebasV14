@@ -47,7 +47,7 @@
                 <field name="isbn"/>
                 <field name="autor_id"/>
                 <templates>
-                    <t name="kanban-box">
+                    <t t-name="kanban-box">
                         <div class="es_kanban_global_click">
                             <div class="o_kanban_image">
                                 <img t-att-src="kanban_image('libros', 'imagen', 'record.id.raw.value')" alt="Imagen"/>
