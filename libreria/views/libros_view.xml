@@ -9,6 +9,7 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="imagen" widget="image" class="oi_avatar"/> <!-- Agregar widget y class para que aparezca la imagen en el formulario-->
                             <field name="name"/>
                             <field name="editorial"/>
                             <field name="isbn"/>
