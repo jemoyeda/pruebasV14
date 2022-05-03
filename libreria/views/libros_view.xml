@@ -31,7 +31,7 @@
                 <field name="name"/>
                 <field name="editorial"/>
                 <field name="isbn"/>
-                <field name="autor_id"
+                <field name="autor_id" optional="hide"/>
             </tree>
         </field>
     </record>
