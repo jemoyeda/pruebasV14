@@ -12,6 +12,7 @@
                             <field name="name"/>
                             <field name="editorial"/>
                             <field name="isbn"/>
+                            <field name="autor_id"/>
                         </group>
                     </group>
                 </sheet>
